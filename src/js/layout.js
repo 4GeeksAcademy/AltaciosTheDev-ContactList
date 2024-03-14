@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import {BrowserRouter, Routes,Route} from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 
 import { Contact } from "./views/Contact";
@@ -34,4 +34,5 @@ const Layout = () => {
 	);
 };
 
+//invoking injectContext(Layout) with Layout as argument 
 export default injectContext(Layout);

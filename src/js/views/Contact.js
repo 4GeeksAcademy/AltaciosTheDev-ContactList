@@ -4,6 +4,7 @@ import {ContactCard} from "../component/ContactCard.js";
 import "../../styles/home.css";
 import personLogo from "../../img/personLogo.png";
 import femaleLogo from "../../img/femaleLogo.png"
+
 export const Contact = () => {
 	// const [store, actions] = useContext(Context)
 	const {store, actions} = useContext(Context)
