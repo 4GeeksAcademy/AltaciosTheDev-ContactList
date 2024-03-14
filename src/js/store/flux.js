@@ -1,4 +1,6 @@
+
 const getState = ({ getStore, getActions, setStore }) => {
+
 	return {
 		store: {
 			demo: [
@@ -14,7 +16,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			],
 			contacts:[],
-			editContact: null 
+			edit: null 
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -41,7 +43,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.error(error)
 				}
 			},
-			sendContact: async (newcontact) => {
+			sendAddContact: async (newcontact) => {
 				try{
 					const response = await fetch("https://playground.4geeks.com/apis/fake/contact", {
 						method: "POST",
@@ -57,38 +59,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.error(error)
 				}
 			},
-			sendEditContact: async (editContact, id) => {
-			
-				try{
-					const response = await fetch(`https://playground.4geeks.com/apis/fake/contact/${id}`, {
-						method: "PUT",
-						body: JSON.stringify(editContact),
-						headers: {
-						"Content-Type": "application/json"
-						}
-			  		})
-					const data = await response.json()
-					console.log(data)
-					if(response.ok){
-						setStore({editContact: null})
-						return true
-					}
-				}	
-				catch(error){
-					console.error(error)
-				}
-			},
-			editContact: (id) => {
+			addContact: (newContact) => {
 				//get store to work with
 				const store = getStore()
 				//getActions to send the new contact through to the API
-				const contactToEdit = store.contacts.find((contact) => {
-					return contact.id === id
-				})
+				getActions().sendAddContact(newContact)
 				//modify the store accordingly
-				if(contactToEdit){
-					setStore({editContact: contactToEdit})
-				}
+				setStore({contacts: [newContact, ...store.contacts]})
 			},
 			sendDeleteContact: async (id) => {
 				try{
@@ -100,14 +77,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.error(error)
 				}
 			},
-			addContact: (newContact) => {
-				//get store to work with
-				const store = getStore()
-				//getActions to send the new contact through to the API
-				getActions().sendContact(newContact)
-				//modify the store accordingly
-				setStore({contacts: [newContact, ...store.contacts]})
-			},
 			deleteContact: (id) => {
 				const store = getStore()
 				const newContacts = store.contacts.filter((contact) => {
@@ -115,6 +84,42 @@ const getState = ({ getStore, getActions, setStore }) => {
 				})
 				getActions().sendDeleteContact(id)
 				setStore({contacts: newContacts})
+			},
+			sendEditContact: async (newFormData, id) => {
+				//send http request with newFormData
+				try{
+					const response = await fetch(`https://playground.4geeks.com/apis/fake/contact/${id}`, {
+						method: "PUT",
+						body: JSON.stringify(newFormData),
+						headers: {
+						"Content-Type": "application/json"
+						}
+			  		})
+					const data = await response.json()
+					console.log(data)
+
+					//if response successful, empty edit obj {}
+					if(response.ok){
+						setStore({edit: null})
+						return true
+					}
+				}	
+				catch(error){
+					console.error(error)
+				}
+			},
+			//kind of an enter edit mode, and store contactToEdit in store.edit
+			editMode: (id) => {
+				//get store to work with
+				const store = getStore()
+				//get only the contactToEdit, find returns value of first to meet condition
+				const contactToEdit = store.contacts.find((contact) => {
+					return contact.id === id
+				})
+				//modify the store accordingly, if contactToEdit filled with truth value
+				if(contactToEdit){
+					setStore({edit: contactToEdit})
+				}
 			},
 			changeColor: (index, color) => {
 				//get the store

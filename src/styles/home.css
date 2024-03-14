@@ -122,3 +122,7 @@ body{
     background: none;
     border: none;
   }
+
+  .trash{
+    color: red;
+  }
