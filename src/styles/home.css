@@ -1,0 +1,124 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    font-family: "Ubuntu", sans-serif;
+}
+
+.contact-card{
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 2rem;
+    border-radius: 0.8rem;
+    background-color: #f0f0f0; /* Light gray background */
+    border: 2px solid #b0bec5; /* Light blue-gray border */
+    max-height: 25vh;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.contact-image-container{
+    margin-right: 4rem;
+    height: 100%;
+}
+
+.contact-img{
+    width: 10rem;
+    border-radius: 50%;
+}   
+
+.contact-body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.icons{
+    font-size: 1.2rem;
+    margin-right: 1rem;
+}
+
+.contact-controls{
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-left: auto;
+}
+
+.contact-controls *{
+    transform: scale(1);
+    transition: transform 250ms;
+}
+
+.contact-controls *:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+.myForm{
+    margin-left: auto;
+    margin-right: auto;
+    padding: 2rem;
+    border-radius: 0.8rem;
+    background-color: #f0f0f0; /* Light gray background */
+    border: 2px solid #b0bec5; /* Light blue-gray border */
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.myBtn{
+    width: 100%;
+
+}
+
+.coolBtn {
+    background: linear-gradient(45deg, #FF6B6B, #FF8E53); /* Gradient background */
+    border: 2px solid #FF6B6B; /* Border color */
+    color: white; /* Text color */
+    padding: 10px 20px; /* Padding */
+    font-size: 16px; /* Font size */
+    cursor: pointer; /* Cursor style */
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+    transform: scale(1);
+    transition: transform 250ms;
+  }
+  
+  .coolBtn:hover {
+    background: linear-gradient(45deg, #FF8E53, #FF6B6B); /* Gradient background on hover */
+    color: white; /* Text color */
+    cursor: pointer;
+    transform: scale(1.05);
+  }
+
+  .cool {
+    border-bottom: 2px solid #FF8E53; /* Border bottom color on hover */
+    color: #FF8E53; /* Text color */
+    transition: border-bottom 0.3s, color 0.3s, border-bottom 0.3s; /* Smooth transition */
+    text-decoration: none;
+    transform: scale(1);
+    transition: transform 250ms;
+  }
+  
+  .cool:hover {
+    color: #FF6B6B;
+    border-bottom: 2px solid #FF6B6B; /* Border bottom color on hover */
+    transform: scale(1.05);
+
+  }
+
+  .navbar{
+    padding: 2rem;
+    background-color: #f0f0f0; /* Light gray background */
+    border-top: 2px solid #b0bec5; /* Light blue-gray border */
+    border-bottom: 2px solid #b0bec5; /* Light blue-gray border */
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  }
+
+  .nostyle{
+    background: none;
+    border: none;
+  }
