@@ -17,7 +17,9 @@ export const AddContact = () => {
     })
 
      useEffect(() => {
-        console.log(formData) 
+        if(formData.full_name){
+            console.log(formData) 
+        }
      },[formData])
 
     function handleChange(event){

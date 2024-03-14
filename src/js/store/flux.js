@@ -97,7 +97,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 			  		})
 					const data = await response.json()
 					console.log(data)
-
 					//if response successful, empty edit obj {}
 					if(response.ok){
 						setStore({edit: null})
@@ -108,7 +107,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.error(error)
 				}
 			},
-			//kind of an enter edit mode, and store contactToEdit in store.edit
 			editMode: (id) => {
 				//get store to work with
 				const store = getStore()
